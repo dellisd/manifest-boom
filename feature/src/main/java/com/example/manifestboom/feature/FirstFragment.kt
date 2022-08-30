@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.manifestboom.feature.databinding.FragmentFeatureFirstBinding
 import com.example.manifestboom.library.Thing
 import com.example.manifestboom.library.ThingContainer
+import com.example.manifestboom.library.ThingContainer_Factory
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -22,13 +23,17 @@ class FirstFragment : Fragment() {
   // onDestroyView.
   private val binding get() = _binding!!
 
-  // TODO: This class can be instantiated normally
+  // TODO: This class can be instantiated normally, it exists in the :feature module's generated code
   private val component = DaggerFeatureComponent.create()
-    .also { Log.d("FeatureFragment", it.toString()) }
+    .also { Log.wtf("FeatureFragment", it.toString()) }
+
+  // TODO: This can ALSO be instantiated normally, it exists in the :library module's generated code
+  private val provider = ThingContainer_Factory.create()
+    .also { Log.wtf("FeatureFragment", it.toString()) }
 
   // TODO: This class can not, because reasons ???
   private val thing: Thing = Thing("Thingy")
-    .also { Log.d("FeatureFragment", it.toString()) }
+    .also { Log.wtf("FeatureFragment", it.toString()) }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
