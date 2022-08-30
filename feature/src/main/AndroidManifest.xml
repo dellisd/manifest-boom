@@ -3,22 +3,28 @@
   <application>
     <activity
         android:name="com.example.manifestboom.feature.FeatureActivity"
-        android:exported="false"
+        android:exported="true"
         android:label="@string/title_activity_feature"
         android:theme="@style/Theme.ManifestBoom.NoActionBar">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+
       <meta-data
           android:name="android.app.lib_name"
           android:value="" />
     </activity>
 
-    <receiver android:name=".ExampleAppWidgetProvider"
-        android:exported="false">
-      <intent-filter>
-        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-      </intent-filter>
-      <meta-data android:name="android.appwidget.provider"
-        android:resource="@xml/widget" />
-    </receiver>
+<!--    <receiver android:name=".ExampleAppWidgetProvider"-->
+<!--        android:exported="false">-->
+<!--      <intent-filter>-->
+<!--        <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
+<!--      </intent-filter>-->
+<!--      <meta-data android:name="android.appwidget.provider"-->
+<!--        android:resource="@xml/widget" />-->
+<!--    </receiver>-->
   </application>
 
   <dist:module dist:title="@string/feature_title">

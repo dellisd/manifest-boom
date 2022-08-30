@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "Manifest Boom"
 include ':app'
 include ':feature'
+include ':library'

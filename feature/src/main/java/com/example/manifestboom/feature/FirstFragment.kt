@@ -1,12 +1,15 @@
 package com.example.manifestboom.feature
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.manifestboom.feature.databinding.FragmentFeatureFirstBinding
+import com.example.manifestboom.library.Thing
+import com.example.manifestboom.library.ThingContainer
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -18,6 +21,14 @@ class FirstFragment : Fragment() {
   // This property is only valid between onCreateView and
   // onDestroyView.
   private val binding get() = _binding!!
+
+  // TODO: This class can be instantiated normally
+  private val component = DaggerFeatureComponent.create()
+    .also { Log.d("FeatureFragment", it.toString()) }
+
+  // TODO: This class can not, because reasons ???
+  private val thing: Thing = Thing("Thingy")
+    .also { Log.d("FeatureFragment", it.toString()) }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +45,8 @@ class FirstFragment : Fragment() {
     binding.buttonFirst.setOnClickListener {
       findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
     }
+
+    binding.textviewFirst.text = thing.doThing()
   }
 
   override fun onDestroyView() {
